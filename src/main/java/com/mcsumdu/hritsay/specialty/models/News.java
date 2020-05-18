@@ -29,10 +29,7 @@ public class News {
         this.date = date;
     }
 
-    public News() {
-    }
-
-
+    public News() {}
 
     public Long getId() {
         return id;
@@ -81,7 +78,6 @@ public class News {
     public void setDate(Date date) {
         this.date = date;
     }
-
 
     @Override
     public String toString() {
