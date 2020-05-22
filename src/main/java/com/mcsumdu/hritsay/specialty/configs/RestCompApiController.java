@@ -1,4 +1,4 @@
-package com.mcsumdu.hritsay.specialty.controllers.rest;
+package com.mcsumdu.hritsay.specialty.configs;
 
 
 import org.springframework.web.bind.annotation.RestController;

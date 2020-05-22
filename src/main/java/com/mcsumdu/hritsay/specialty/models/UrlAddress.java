@@ -1,15 +1,15 @@
 package com.mcsumdu.hritsay.specialty.models;
 
-public class UrlAdress {
+public class UrlAddress {
     private int urlId;
-    private String title;
+    private String url;
     private String urlType;
 
-    public UrlAdress() {}
+    public UrlAddress() {}
 
-    public UrlAdress(int urlId, String title, String urlType) {
+    public UrlAddress(int urlId, String url, String urlType) {
         this.urlId = urlId;
-        this.title = title;
+        this.url = url;
         this.urlType = urlType;
     }
 
@@ -21,13 +21,14 @@ public class UrlAdress {
         this.urlId = urlId;
     }
 
-    public String getTitle() {
-        return title;
+    public String getUrl() {
+        return url;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public void setUrl(String url) {
+        this.url = url;
     }
+
 
     public String getUrlType() {
         return urlType;
@@ -41,7 +42,6 @@ public class UrlAdress {
     public String toString() {
         return "UrlAdress{" +
                 "urlId=" + urlId +
-                ", title='" + title + '\'' +
                 ", urlType='" + urlType + '\'' +
                 '}';
     }

@@ -6,17 +6,19 @@ public class Educator {
     private String surname;
     private String patronymic;
     private String description;
+    private String urlToImage;
     private int managerId;
     private int roleId;
 
     public Educator() {}
 
-    public Educator(int educatorId, String name, String surname, String patronymic, String description, int managerId, int roleId) {
+    public Educator(int educatorId, String name, String surname, String patronymic, String description, String urlToImage, int managerId, int roleId) {
         this.educatorId = educatorId;
         this.name = name;
         this.surname = surname;
         this.patronymic = patronymic;
         this.description = description;
+        this.urlToImage = urlToImage;
         this.managerId = managerId;
         this.roleId = roleId;
     }
@@ -59,6 +61,14 @@ public class Educator {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public String getUrlToImage() {
+        return urlToImage;
+    }
+
+    public void setUrlToImage(String urlToImage) {
+        this.urlToImage = urlToImage;
     }
 
     public int getManagerId() {

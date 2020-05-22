@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/teachers")
 public class TeachersController {
 
+
     public String showAllTeachers() {
         return "teachers";
     }

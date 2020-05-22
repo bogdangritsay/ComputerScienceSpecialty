@@ -1,41 +1,37 @@
 package com.mcsumdu.hritsay.specialty.models;
 
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+
 import java.sql.Date;
 
-@Entity
 public class News {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+
+    private int id;
 
     private String title;
     private String description;
     private String text;
-    private String urlToImage;
+    private int imgUrlId;
     private Date date;
 
 
-    public News(String title, String description, String text, String urlToImage, Date date) {
+    public News(int id, String title, String description, String text, int urlToImage, Date date) {
+        this.id = id;
         this.title = title;
         this.description = description;
         this.text = text;
-        this.urlToImage = urlToImage;
+        this.imgUrlId = urlToImage;
         this.date = date;
     }
 
     public News() {}
 
-    public Long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -63,12 +59,12 @@ public class News {
         this.text = text;
     }
 
-    public String getUrlToImage() {
-        return urlToImage;
+    public int getImgUrlId() {
+        return imgUrlId;
     }
 
-    public void setUrlToImage(String urlToImage) {
-        this.urlToImage = urlToImage;
+    public void setImgUrlId(int imgUrlId) {
+        this.imgUrlId = imgUrlId;
     }
 
     public Date getDate() {
@@ -86,7 +82,7 @@ public class News {
                 ", title='" + title + '\'' +
                 ", description='" + description + '\'' +
                 ", text='" + text + '\'' +
-                ", urlToImage='" + urlToImage + '\'' +
+                ", urlToImage='" + imgUrlId + '\'' +
                 ", date=" + date +
                 '}';
     }

@@ -20,19 +20,21 @@
 
     <div class="container">
         <div class="container mt-5">
-            <h1>Новини спеціальності</h1>
+            <h1>Новаші викладачі</h1>
             <hr>
             <div class="margin-3"></div>
-            <div th:each="el : ${news}" class="alert alert-info mt-2">
-                <h3 th:text="${el.title}"></h3>
-                <!--<img th:src="${el.urlToImage}" class="news-picture" >-->
+            <div th:each="el : ${teachers}" class="alert alert-info mt-2">
+                <h3 th:text="${el.surname}"></h3>
+                <h3 th:text="${el.name}"></h3>
+                <h3 th:text="${el.patronymic}"></h3>
+                <img th:src="${el.urlToImage}" class="news-picture" >
                 <p th:text="${el.description}"></p>
                 <a th:href="'/news/' + ${el.id}" class="btn btn-warning">Детальніше... </a>
             </div>
 
 
         </div>
-    <div class="clear"></div>
+        <div class="clear"></div>
     </div>
 </div>
 
