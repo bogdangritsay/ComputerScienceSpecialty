@@ -25,7 +25,6 @@
             <div class="margin-3"></div>
             <div th:each="el : ${news}" class="alert alert-info mt-2">
                 <h3 th:text="${el.title}"></h3>
-                <!--<img th:src="${el.urlToImage}" class="news-picture" >-->
                 <p th:text="${el.description}"></p>
                 <a th:href="'/news/' + ${el.id}" class="btn btn-warning">Детальніше... </a>
             </div>

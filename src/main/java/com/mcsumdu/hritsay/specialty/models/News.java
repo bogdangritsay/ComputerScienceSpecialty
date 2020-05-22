@@ -2,22 +2,36 @@ package com.mcsumdu.hritsay.specialty.models;
 
 
 
+import javax.persistence.*;
 import java.sql.Date;
 
+@Entity
+@Table(name = "site_news")
 public class News {
 
-
-    private int id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "news_id")
+    private Long id;
 
     private String title;
+
+    @Column(name = "short_desc")
     private String description;
+
+    @Column(name = "news_text")
     private String text;
-    private int imgUrlId;
+
+    @Column(name = "url_img_id")
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "url_img_id")
+    private UrlAddress imgUrlId;
+
+    @Column(name = "news_date")
     private Date date;
 
 
-    public News(int id, String title, String description, String text, int urlToImage, Date date) {
-        this.id = id;
+    public News(String title, String description, String text, int urlToImage, Date date) {
         this.title = title;
         this.description = description;
         this.text = text;
@@ -27,11 +41,11 @@ public class News {
 
     public News() {}
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
