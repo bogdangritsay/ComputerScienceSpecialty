@@ -41,7 +41,19 @@ public abstract class PostgresDAOConnection implements DAOConnection {
 
     @Override
     public void disconnect() {
-
+        try {
+            if(connection != null) {
+                connection.close();
+            }
+            if(resultSet != null) {
+                resultSet.close();
+            }
+            if(statement != null) {
+                statement.close();
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
 

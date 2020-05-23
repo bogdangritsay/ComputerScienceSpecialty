@@ -7,8 +7,7 @@ public class UrlAddress {
 
     public UrlAddress() {}
 
-    public UrlAddress(int urlId, String url, String urlType) {
-        this.urlId = urlId;
+    public UrlAddress(String url, String urlType) {
         this.url = url;
         this.urlType = urlType;
     }

@@ -7,22 +7,52 @@ import java.sql.Date;
 public class News {
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     private int id;
 
     private String title;
     private String description;
     private String text;
-    private int imgUrlId;
     private Date date;
+    private  String imgUrl;
 
-
-    public News(int id, String title, String description, String text, int urlToImage, Date date) {
+    public News(int id, String title, String description, String text, Date date, String imgUrl) {
         this.id = id;
         this.title = title;
         this.description = description;
         this.text = text;
-        this.imgUrlId = urlToImage;
         this.date = date;
+        this.imgUrl = imgUrl;
+    }
+
+    public News(String title, String description, String text, Date date, String imgUrl) {
+        this.title = title;
+        this.description = description;
+        this.text = text;
+        this.date = date;
+        this.imgUrl = imgUrl;
+    }
+
+    public String getImgUrl() {
+        return imgUrl;
+    }
+
+    public void setImgUrl(String imgUrl) {
+        this.imgUrl = imgUrl;
     }
 
     public News() {}
@@ -59,13 +89,7 @@ public class News {
         this.text = text;
     }
 
-    public int getImgUrlId() {
-        return imgUrlId;
-    }
 
-    public void setImgUrlId(int imgUrlId) {
-        this.imgUrlId = imgUrlId;
-    }
 
     public Date getDate() {
         return date;
@@ -82,7 +106,6 @@ public class News {
                 ", title='" + title + '\'' +
                 ", description='" + description + '\'' +
                 ", text='" + text + '\'' +
-                ", urlToImage='" + imgUrlId + '\'' +
                 ", date=" + date +
                 '}';
     }

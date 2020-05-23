@@ -21,18 +21,20 @@
     <div class="container">
         <div class="container mt-5">
             <h1>Новини спеціальності</h1>
+
+            <a th:href="'/news-admin/add'" class="btn btn-success">Додати новину</a>
             <hr>
             <div class="margin-3"></div>
             <div th:each="el : ${news}" class="alert alert-info mt-2">
                 <h3 th:text="${el.title}"></h3>
                 <!--<img th:src="${el.urlToImage}" class="news-picture" >-->
                 <p th:text="${el.description}"></p>
-                <a th:href="'/news/' + ${el.id}" class="btn btn-info">Детальніше... </a>
+                <a th:href="'/news-admin/' + ${el.id}" class="btn btn-info">Детальніше... </a>
             </div>
 
 
         </div>
-    <div class="clear"></div>
+        <div class="clear"></div>
     </div>
 </div>
 
