@@ -46,7 +46,8 @@ public class TeachersAdminController {
     }
 
     @PostMapping("/educators-admin/add")
-    public String educatorAddNew( @RequestParam String name,
+    public String educatorAddNew(
+                                @RequestParam String name,
                                @RequestParam String surname,
                                @RequestParam String patronymic,
                                @RequestParam int role,

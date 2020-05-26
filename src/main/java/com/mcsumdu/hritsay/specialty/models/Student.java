@@ -6,11 +6,11 @@ public class Student {
     private String name;
     private String surname;
     private String patronymic;
-    private String group;
+    private Group group;
 
     public Student() {}
 
-    public Student(int id, String name, String surname, String patronymic, String group) {
+    public Student(int id, String name, String surname, String patronymic, Group group) {
         this.id = id;
         this.name = name;
         this.surname = surname;
@@ -50,11 +50,11 @@ public class Student {
         this.patronymic = patronymic;
     }
 
-    public String getGroup() {
+    public Group getGroup() {
         return group;
     }
 
-    public void setGroup(String group) {
+    public void setGroup(Group group) {
         this.group = group;
     }
 
@@ -65,7 +65,7 @@ public class Student {
                 ", name='" + name + '\'' +
                 ", surname='" + surname + '\'' +
                 ", patronymic='" + patronymic + '\'' +
-                ", group='" + group + '\'' +
+                ", group=" + group +
                 '}';
     }
 }
