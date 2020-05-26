@@ -86,7 +86,6 @@ public class NewsPostgresDAO extends PostgresDAOConnection {
         return news;
     }
 
-
     public void addNews(News news) {
 
         if(!urlsPostgresDAO.existsUrlByString(news.getImgUrl())) {

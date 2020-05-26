@@ -22,30 +22,34 @@
         <div class="container mt-5">
             <h1>Наші викладачі</h1>
             <hr>
+            <div class="container">
+                <div class="row justify-content-center">
+                <a th:href="'/educators-admin/add'" class="btn btn-success">Додати нового викладача</a>
+                </div>
+            </div>
             <div class="margin-3"></div>
-            <!--<div th:each="el : ${teachers}" class="alert alert-info mt-2">
-                <h3 th:text="${el.surname}"></h3>
-                <h3 th:text="${el.name}"></h3>
-                <h3 th:text="${el.patronymic}"></h3>
-                <img th:src="${el.urlToImage}" class="news-picture" >
-                <p th:text="${el.description}"></p>
-                <a th:href="'/news/' + ${el.id}" class="btn btn-warning">Детальніше... </a>
-            </div>-->
             <div class="row">
                 <div th:each="el : ${teachers}" class="card mb-3" style="max-width: 540px;">
-                    <div class="row no-gutters">
-                        <div class="col-md-4">
-                            <img th:src="${el.getUrlToImage().getUrl()}" class="card-img">
-                        </div>
-                        <div class="col-md-8">
-                            <div class="card-body">
-                                <h5 th:text="${el.surname} + '  ' +  ${el.name} + '  ' + ${el.patronymic}" class="card-title">ПІБ ВИКЛАДАЧА</h5>
-                                <p th:text="${el.description}" class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                                <p th:text="${el.getRole().getTitle()}" class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                <div class="row no-gutters">
+                    <div class="col-md-4">
+                        <img th:src="${el.getUrlToImage().getUrl()}" class="card-img">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <h5 th:text="${el.surname} + '  ' +  ${el.name} + '  ' + ${el.patronymic}" class="card-title">ПІБ ВИКЛАДАЧА</h5>
+                            <p th:text="${el.description}" class="card-text"></p>
+                            <p th:text="${el.getRole().getTitle()}" class="card-text"><small class="text-muted"></small></p>
+                            <div class="container">
+                                <div class="row">
+                                    <form th:action="'/educators-admin/' + ${el.getEducatorId()} + '/remove'" method="post">
+                                        <button class="btn btn-danger" type="submit">Видалити</button>
+                                    </form>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
+            </div>
             </div>
 
         </div>

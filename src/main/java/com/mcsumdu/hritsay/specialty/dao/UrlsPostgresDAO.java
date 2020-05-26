@@ -1,11 +1,10 @@
 package com.mcsumdu.hritsay.specialty.dao;
 
 
-import com.mcsumdu.hritsay.specialty.models.News;
 import com.mcsumdu.hritsay.specialty.models.UrlAddress;
 import org.springframework.stereotype.Component;
 
-import java.sql.Date;
+
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
@@ -36,6 +35,29 @@ public class UrlsPostgresDAO extends PostgresDAOConnection {
             disconnect();
         }
         return isExists;
+    }
+
+    public UrlAddress getUrlById(int id) {
+        connect();
+        UrlAddress urlAddress = new UrlAddress();
+        try {
+            statement = connection.prepareStatement("select *  from urls  where url_id = ?");
+            statement.setInt(1, id);
+            resultSet = statement.executeQuery();
+            while(resultSet.next()) {
+                urlAddress.setUrlId(resultSet.getInt("URL_ID"));
+                urlAddress.setUrl(resultSet.getString("URL"));
+                urlAddress.setUrlType(resultSet.getString("TYPE"));
+            }
+        } catch (SQLException e) {
+            /*
+             * LOGS
+             */
+        } finally {
+            disconnect();
+        }
+
+        return urlAddress;
     }
 
     public int getUrlIdByString(String url) {

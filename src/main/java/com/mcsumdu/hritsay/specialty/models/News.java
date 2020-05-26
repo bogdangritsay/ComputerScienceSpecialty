@@ -5,25 +5,7 @@ package com.mcsumdu.hritsay.specialty.models;
 import java.sql.Date;
 
 public class News {
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     private int id;
-
     private String title;
     private String description;
     private String text;

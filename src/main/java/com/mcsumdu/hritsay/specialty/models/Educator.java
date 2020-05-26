@@ -6,21 +6,31 @@ public class Educator {
     private String surname;
     private String patronymic;
     private String description;
-    private String urlToImage;
-    private int managerId;
-    private int roleId;
+    private UrlAddress urlToImage;
+    private Educator manager;
+    private Role role;
 
     public Educator() {}
 
-    public Educator(int educatorId, String name, String surname, String patronymic, String description, String urlToImage, int managerId, int roleId) {
+    public Educator(int educatorId, String name, String surname, String patronymic, String description, UrlAddress urlToImage, Educator manager, Role role) {
         this.educatorId = educatorId;
         this.name = name;
         this.surname = surname;
         this.patronymic = patronymic;
         this.description = description;
         this.urlToImage = urlToImage;
-        this.managerId = managerId;
-        this.roleId = roleId;
+        this.manager = manager;
+        this.role = role;
+    }
+
+    public Educator(String name, String surname, String patronymic, String description, UrlAddress urlToImage, Educator manager, Role role) {
+        this.name = name;
+        this.surname = surname;
+        this.patronymic = patronymic;
+        this.description = description;
+        this.urlToImage = urlToImage;
+        this.manager = manager;
+        this.role = role;
     }
 
     public int getEducatorId() {
@@ -63,27 +73,40 @@ public class Educator {
         this.description = description;
     }
 
-    public String getUrlToImage() {
+    public UrlAddress getUrlToImage() {
         return urlToImage;
     }
 
-    public void setUrlToImage(String urlToImage) {
+    public void setUrlToImage(UrlAddress urlToImage) {
         this.urlToImage = urlToImage;
     }
 
-    public int getManagerId() {
-        return managerId;
+    public Educator getManager() {
+        return manager;
     }
 
-    public void setManagerId(int managerId) {
-        this.managerId = managerId;
+    public void setManager(Educator manager) {
+        this.manager = manager;
     }
 
-    public int getRoleId() {
-        return roleId;
+    public Role getRole() {
+        return role;
     }
 
-    public void setRoleId(int roleId) {
-        this.roleId = roleId;
+    public void setRole(Role role) {
+        this.role = role;
+    }
+
+    @Override
+    public String toString() {
+        return "Educator{" +
+                "educatorId=" + educatorId +
+                ", name='" + name + '\'' +
+                ", surname='" + surname + '\'' +
+                ", patronymic='" + patronymic + '\'' +
+                ", description='" + description + '\'' +
+                ", urlToImage=" + urlToImage +
+                ", manager=" + manager +
+                ", role=" + role;
     }
 }

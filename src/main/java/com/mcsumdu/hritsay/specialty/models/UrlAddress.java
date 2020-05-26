@@ -39,8 +39,9 @@ public class UrlAddress {
 
     @Override
     public String toString() {
-        return "UrlAdress{" +
+        return "UrlAddress{" +
                 "urlId=" + urlId +
+                ", url='" + url + '\'' +
                 ", urlType='" + urlType + '\'' +
                 '}';
     }

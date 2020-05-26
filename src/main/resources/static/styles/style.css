@@ -64,6 +64,10 @@ a:hover {
 
 }
 
+.card {
+    margin: 2px;
+}
+
 img .news-picture {
     position: relative;
     float: right;
