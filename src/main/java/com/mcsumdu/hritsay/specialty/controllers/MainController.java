@@ -1,38 +1,77 @@
 package com.mcsumdu.hritsay.specialty.controllers;
 
-
-import com.mcsumdu.hritsay.specialty.models.News;
-import com.mcsumdu.hritsay.specialty.repo.NewsRepository;
+import java.util.List;
+import com.mcsumdu.hritsay.specialty.dao.EducationServicesPostgresDAO;
+import com.mcsumdu.hritsay.specialty.dao.EducatorsPostgresDAO;
+import com.mcsumdu.hritsay.specialty.dao.NewsPostgresDAO;
+import com.mcsumdu.hritsay.specialty.dao.StudentsPostgresDAO;
+import com.mcsumdu.hritsay.specialty.models.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
 
 @Controller
 public class MainController {
     @Autowired
-    private NewsRepository newsRepository;
+    private NewsPostgresDAO newsPostgresDAO;
+    @Autowired
+    private EducatorsPostgresDAO educatorsPostgresDAO;
+    @Autowired
+    private StudentsPostgresDAO studentsPostgresDAO;
+    @Autowired
+    private EducationServicesPostgresDAO educationServicesPostgresDAO;
 
     @GetMapping("/")
     public String home(Model model) {
-
-        Iterable<News> sourceNews = newsRepository.findAll();
-        List<News> newsList = new ArrayList<>();
-        int count = 0;
-        Iterator newsIterator = sourceNews.iterator();
-        while(newsIterator.hasNext()) {
-            if(count == 3) break;
-            newsList.add((News)newsIterator.next());
-
-            count++;
-        }
-        Iterable<News> news = newsList;
+        Iterable<News> news = newsPostgresDAO.getThreeLastNews();
         model.addAttribute("news", news);
         return "home";
+    }
+
+    @GetMapping("/teachers")
+    public String showAllTeachers(Model model) {
+        List<Educator> educators = educatorsPostgresDAO.getAllEducators();
+        model.addAttribute("teachers", educators);
+        return "teachers";
+    }
+
+    @GetMapping("/students")
+    public String showStudents(Model model) {
+        List<Group> groups = studentsPostgresDAO.getAllGroups();
+        model.addAttribute("groups", groups);
+        return "students";
+    }
+
+    @PostMapping("/students")
+    public String showStudentsByGroup(@RequestParam String groupTitle, Model model) {
+        List<Group> groups = studentsPostgresDAO.getAllGroups();
+        model.addAttribute("groups", groups);
+        Group group = studentsPostgresDAO.getGroupByTitle(groupTitle);
+        List<Student> students = studentsPostgresDAO.getAllStudentsByGroup(group);
+        model.addAttribute("students", students);
+        return "students";
+    }
+
+    @GetMapping("/services")
+    public String showAllServices(Model model) {
+        List<Group> groups = studentsPostgresDAO.getAllGroups();
+        model.addAttribute("groups", groups);
+
+        return "services";
+    }
+
+    @PostMapping("/services")
+    public String showServicesByGroup(@RequestParam String groupTitle, Model model) {
+        List<Group> groups = studentsPostgresDAO.getAllGroups();
+        model.addAttribute("groups", groups);
+        int groupId = studentsPostgresDAO.getGroupByTitle(groupTitle).getId();
+        List<EducationService> services = educationServicesPostgresDAO.getServicesByGroupId(groupId);
+        model.addAttribute("services", services);
+        return "services";
     }
 
 }

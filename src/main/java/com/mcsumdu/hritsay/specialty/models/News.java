@@ -1,44 +1,49 @@
 package com.mcsumdu.hritsay.specialty.models;
 
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+
 import java.sql.Date;
 
-@Entity
 public class News {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
-
+    private int id;
     private String title;
     private String description;
     private String text;
-    private String urlToImage;
     private Date date;
+    private  String imgUrl;
 
-
-    public News(String title, String description, String text, String urlToImage, Date date) {
+    public News(int id, String title, String description, String text, Date date, String imgUrl) {
+        this.id = id;
         this.title = title;
         this.description = description;
         this.text = text;
-        this.urlToImage = urlToImage;
         this.date = date;
+        this.imgUrl = imgUrl;
     }
 
-    public News() {
+    public News(String title, String description, String text, Date date, String imgUrl) {
+        this.title = title;
+        this.description = description;
+        this.text = text;
+        this.date = date;
+        this.imgUrl = imgUrl;
     }
 
+    public String getImgUrl() {
+        return imgUrl;
+    }
 
+    public void setImgUrl(String imgUrl) {
+        this.imgUrl = imgUrl;
+    }
 
-    public Long getId() {
+    public News() {}
+
+    public int getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -66,13 +71,7 @@ public class News {
         this.text = text;
     }
 
-    public String getUrlToImage() {
-        return urlToImage;
-    }
 
-    public void setUrlToImage(String urlToImage) {
-        this.urlToImage = urlToImage;
-    }
 
     public Date getDate() {
         return date;
@@ -82,7 +81,6 @@ public class News {
         this.date = date;
     }
 
-
     @Override
     public String toString() {
         return "News{" +
@@ -90,7 +88,6 @@ public class News {
                 ", title='" + title + '\'' +
                 ", description='" + description + '\'' +
                 ", text='" + text + '\'' +
-                ", urlToImage='" + urlToImage + '\'' +
                 ", date=" + date +
                 '}';
     }

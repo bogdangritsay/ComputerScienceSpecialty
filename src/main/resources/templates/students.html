@@ -20,19 +20,48 @@
 
     <div class="container">
         <div class="container mt-5">
-            <h1>Новини спеціальності</h1>
+            <h1>Студенти спеціальності</h1>
             <hr>
             <div class="margin-3"></div>
-            <div th:each="el : ${news}" class="alert alert-info mt-2">
-                <h3 th:text="${el.title}"></h3>
-                <!--<img th:src="${el.urlToImage}" class="news-picture" >-->
-                <p th:text="${el.description}"></p>
-                <a th:href="'/news/' + ${el.id}" class="btn btn-info">Детальніше... </a>
+            <div class="container">
+                <form action="" method="post">
+                    <select class="form-control" name="groupTitle">
+                        <option>Оберіть групу</option>
+                        <option th:each="el : ${groups}" th:text="${el.getTitle()}">410-i</option>
+                    </select>
+
+                    <button class="btn btn-primary" type="submit">Переглянути</button>
+
+                </form>
+
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th scope="col">№</th>
+                        <th scope="col">Прізвище</th>
+                        <th scope="col">Ім'я</th>
+                        <th scope="col">По батькові</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="el, iterator : ${students}">
+                        <th scope="row" th:text="${iterator.index+1}">Number</th>
+                        <td th:text="${el.getName()}">Name</td>
+                        <td th:text="${el.getSurname()}">Surname</td>
+                        <td th:text="${el.getPatronymic()}">Patronymic</td>
+                    </tr>
+                    </tbody>
+                </table>
+
+
+
+
+
             </div>
 
 
         </div>
-    <div class="clear"></div>
+        <div class="clear"></div>
     </div>
 </div>
 

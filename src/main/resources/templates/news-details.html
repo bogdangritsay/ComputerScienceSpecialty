@@ -24,8 +24,9 @@
                 <h3 th:text="${el.title}"></h3>
                 <span th:text="${el.date.toString()}"></span>
                 <hr>
-                <img th:src="${el.urlToImage}" class="news-picture">
                 <p th:text="${el.text}"></p>
+                <img th:src="${el.imgUrl}" class="news-picture" width="100%">
+                <br>
                 <a th:href="'/news'" class="btn btn-warning">Повернутися до всіх новин</a>
             </div>
         </div>
