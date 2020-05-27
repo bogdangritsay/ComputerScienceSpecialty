@@ -1,14 +1,22 @@
 package com.mcsumdu.hritsay.specialty.dao;
 
 
-import java.sql.*;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
 
+import java.sql.*;
 public abstract class PostgresDAOConnection implements DAOConnection {
     public static PostgresDAOConnection postgresDAOConnection;
     protected Connection connection;
     protected  PreparedStatement statement;
     protected  ResultSet resultSet;
     protected Driver driver;
+    @Value("${db.url}")
+    private String url;
+    @Value("${db.login}")
+    private String login;
+    @Value("${db.password}")
+    private String password;
 
 
     @Override
@@ -25,7 +33,7 @@ public abstract class PostgresDAOConnection implements DAOConnection {
                 e.printStackTrace();
             }
             DriverManager.registerDriver(driver);
-            connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/comp_science_db", "postgres", "356897-Bnm");
+            connection = DriverManager.getConnection(url, login, password);
             if (connection.isClosed()) {
                 System.out.println("Connection is closed!");
                 /*

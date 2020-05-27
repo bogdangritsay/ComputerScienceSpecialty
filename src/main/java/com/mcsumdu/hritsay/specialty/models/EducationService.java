@@ -4,17 +4,21 @@ public class EducationService {
     private int serviceId;
     private String title;
     private String description;
-    private int subjectId;
-    private int serviceUrlId;
+    private Subject subject;
+    private UrlAddress serviceUrl;
+    private Group group;
+    private Educator educator;
 
     public EducationService() {}
 
-    public EducationService(int serviceId, String title, String description, int subjectId, int serviceUrlId) {
+    public EducationService(int serviceId, String title, String description, Subject subject, UrlAddress serviceUrl, Group group, Educator educator) {
         this.serviceId = serviceId;
         this.title = title;
         this.description = description;
-        this.subjectId = subjectId;
-        this.serviceUrlId = serviceUrlId;
+        this.subject = subject;
+        this.serviceUrl = serviceUrl;
+        this.group = group;
+        this.educator = educator;
     }
 
     public int getServiceId() {
@@ -41,23 +45,37 @@ public class EducationService {
         this.description = description;
     }
 
-    public int getSubjectId() {
-        return subjectId;
+    public Subject getSubject() {
+        return subject;
     }
 
-    public void setSubjectId(int subjectId) {
-        this.subjectId = subjectId;
+    public void setSubject(Subject subject) {
+        this.subject = subject;
     }
 
-    public int getServiceUrlId() {
-        return serviceUrlId;
+    public UrlAddress getServiceUrl() {
+        return serviceUrl;
     }
 
-    public void setServiceUrlId(int serviceUrlId) {
-        this.serviceUrlId = serviceUrlId;
+    public void setServiceUrl(UrlAddress serviceUrl) {
+        this.serviceUrl = serviceUrl;
     }
 
+    public Group getGroup() {
+        return group;
+    }
 
+    public void setGroup(Group group) {
+        this.group = group;
+    }
+
+    public Educator getEducator() {
+        return educator;
+    }
+
+    public void setEducator(Educator educator) {
+        this.educator = educator;
+    }
 
     @Override
     public String toString() {
@@ -65,8 +83,12 @@ public class EducationService {
                 "serviceId=" + serviceId +
                 ", title='" + title + '\'' +
                 ", description='" + description + '\'' +
-                ", subjectId=" + subjectId +
-                ", serviceUrlId=" + serviceUrlId +
+                ", subject=" + subject +
+                ", serviceUrl=" + serviceUrl +
+                ", group=" + group +
+                ", educator=" + educator +
                 '}';
     }
 }
+
+

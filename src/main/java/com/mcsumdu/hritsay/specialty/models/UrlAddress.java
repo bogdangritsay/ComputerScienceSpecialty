@@ -12,6 +12,12 @@ public class UrlAddress {
         this.urlType = urlType;
     }
 
+    public UrlAddress(int urlId, String url, String urlType) {
+        this.urlId = urlId;
+        this.url = url;
+        this.urlType = urlType;
+    }
+
     public int getUrlId() {
         return urlId;
     }

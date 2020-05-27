@@ -1,21 +1,17 @@
 package com.mcsumdu.hritsay.specialty.controllers;
 
+import java.util.List;
+import com.mcsumdu.hritsay.specialty.dao.EducationServicesPostgresDAO;
 import com.mcsumdu.hritsay.specialty.dao.EducatorsPostgresDAO;
 import com.mcsumdu.hritsay.specialty.dao.NewsPostgresDAO;
 import com.mcsumdu.hritsay.specialty.dao.StudentsPostgresDAO;
-import com.mcsumdu.hritsay.specialty.models.Educator;
-import com.mcsumdu.hritsay.specialty.models.Group;
-import com.mcsumdu.hritsay.specialty.models.News;
-import com.mcsumdu.hritsay.specialty.models.Student;
+import com.mcsumdu.hritsay.specialty.models.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-
-import java.util.ArrayList;
-import java.util.List;
 
 
 @Controller
@@ -26,6 +22,8 @@ public class MainController {
     private EducatorsPostgresDAO educatorsPostgresDAO;
     @Autowired
     private StudentsPostgresDAO studentsPostgresDAO;
+    @Autowired
+    private EducationServicesPostgresDAO educationServicesPostgresDAO;
 
     @GetMapping("/")
     public String home(Model model) {
@@ -56,6 +54,24 @@ public class MainController {
         List<Student> students = studentsPostgresDAO.getAllStudentsByGroup(group);
         model.addAttribute("students", students);
         return "students";
+    }
+
+    @GetMapping("/services")
+    public String showAllServices(Model model) {
+        List<Group> groups = studentsPostgresDAO.getAllGroups();
+        model.addAttribute("groups", groups);
+
+        return "services";
+    }
+
+    @PostMapping("/services")
+    public String showServicesByGroup(@RequestParam String groupTitle, Model model) {
+        List<Group> groups = studentsPostgresDAO.getAllGroups();
+        model.addAttribute("groups", groups);
+        int groupId = studentsPostgresDAO.getGroupByTitle(groupTitle).getId();
+        List<EducationService> services = educationServicesPostgresDAO.getServicesByGroupId(groupId);
+        model.addAttribute("services", services);
+        return "services";
     }
 
 }

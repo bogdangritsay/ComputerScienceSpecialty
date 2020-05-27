@@ -68,6 +68,10 @@ a:hover {
     margin: 2px;
 }
 
+.card-service {
+    margin: 15px;
+}
+
 img .news-picture {
     position: relative;
     float: right;
