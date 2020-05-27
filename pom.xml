@@ -11,6 +11,7 @@
     <groupId>com.mcsumdu.hritsay</groupId>
     <artifactId>specialty</artifactId>
     <version>0.0.1-SNAPSHOT</version>
+    <packaging>war</packaging>
     <name>ComputerScienceSpecialty</name>
     <description>Graduation project. Web-system for specialty 122 "Computer science" of Machinebuilding college of Sumy
         State University
